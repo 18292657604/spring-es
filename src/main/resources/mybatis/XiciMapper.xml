@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.skycloud.mapper.XiciMapper">
+
+    <resultMap id="xiciMap" type="com.skycloud.entity.Xici">
+        <id column="id" property="id" javaType="Integer"/>
+        <result column="ip" property="ip"/>
+        <result column="port" property="port"/>
+        <result column="address" property="address"/>
+    </resultMap>
+
+    <select id="getXiciList" parameterType="string" resultMap="xiciMap">
+        select id,ip,port,address from xici
+        <where>
+            1=1
+            <if test="ip!=null and ip!=''">
+                ip=#{ip}
+            </if>
+        </where>
+    </select>
+
+</mapper>
